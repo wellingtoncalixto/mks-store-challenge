@@ -14,7 +14,7 @@ import {
 } from "./styled";
 import CloseButtonComponent from "../CloseButtonComponent/CloseButtonComponent";
 import CartProductCardComponent from "./components/CartProductCardComponent/CartProductCardComponent";
-import { useCartBuy } from "../../contexts/CartBuyContext";
+import { useCartBuy } from "../../contexts/ShowCartBuyContext";
 
 const CartBuyComponent = () => {
   const { open, closeCartBuy } = useCartBuy();
