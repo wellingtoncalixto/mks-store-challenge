@@ -8,7 +8,7 @@ function App() {
     <>
       <HeaderComponent />
       <ProductCardComponent />
-      {/* <CartBuyComponent /> */}
+      <CartBuyComponent />
       <FooterComponent />
     </>
   );

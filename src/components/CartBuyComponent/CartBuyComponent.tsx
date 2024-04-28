@@ -26,6 +26,21 @@ const CartBuyComponent = () => {
         <ListItem>
           <CartProductCardComponent />
         </ListItem>
+        <ListItem>
+          <CartProductCardComponent />
+        </ListItem>
+        <ListItem>
+          <CartProductCardComponent />
+        </ListItem>
+        <ListItem>
+          <CartProductCardComponent />
+        </ListItem>
+        <ListItem>
+          <CartProductCardComponent />
+        </ListItem>
+        <ListItem>
+          <CartProductCardComponent />
+        </ListItem>
       </CartBuyProductsList>
       <CartFooter>
         <CartTotal>

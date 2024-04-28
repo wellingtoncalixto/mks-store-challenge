@@ -4,7 +4,7 @@ export const CartBuyContainer = styled.div`
   position: absolute;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: max-content;
+  grid-template-rows: 10% 70% 20%;
   width: 33.75%;
   height: 100%;
   top: 0;
