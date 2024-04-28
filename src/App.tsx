@@ -1,3 +1,4 @@
+import CartBuyComponent from "./components/CartBuyComponent/CartBuyComponent";
 import HeaderComponent from "./components/HeaderComponent/HeaderComponent";
 import ProductCardComponent from "./components/ProductCardComponent/ProductCardComponent";
 
@@ -6,6 +7,7 @@ function App() {
     <>
       <HeaderComponent />
       <ProductCardComponent />
+      <CartBuyComponent />
     </>
   );
 }
