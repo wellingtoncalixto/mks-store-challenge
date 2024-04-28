@@ -1,6 +1,7 @@
+import { m } from "framer-motion";
 import styled from "styled-components";
 
-export const CartBuyContainer = styled.div`
+export const CartBuyContainer = styled(m.div)`
   position: absolute;
   display: grid;
   grid-template-columns: 1fr;

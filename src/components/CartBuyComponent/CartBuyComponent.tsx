@@ -1,4 +1,7 @@
 import React from "react";
+
+import { LazyMotion, domAnimation, useAnimate, useInView } from "framer-motion";
+
 import {
   CartBuyContainer,
   CartBuyHeader,
@@ -11,44 +14,58 @@ import {
 } from "./styled";
 import CloseButtonComponent from "../CloseButtonComponent/CloseButtonComponent";
 import CartProductCardComponent from "./components/CartProductCardComponent/CartProductCardComponent";
+import { useCartBuy } from "../../contexts/CartBuyContext";
 
 const CartBuyComponent = () => {
+  const { open, closeCartBuy } = useCartBuy();
+  const animate = {
+    transition: { type: "tween" },
+    width: open ? "auto" : 0,
+  };
+
   return (
-    <CartBuyContainer>
-      <CartBuyHeader>
-        <CartBuyTitle>
-          Carrinho
-          <br /> de compras
-        </CartBuyTitle>
-        <CloseButtonComponent />
-      </CartBuyHeader>
-      <CartBuyProductsList>
-        <ListItem>
-          <CartProductCardComponent />
-        </ListItem>
-        <ListItem>
-          <CartProductCardComponent />
-        </ListItem>
-        <ListItem>
-          <CartProductCardComponent />
-        </ListItem>
-        <ListItem>
-          <CartProductCardComponent />
-        </ListItem>
-        <ListItem>
-          <CartProductCardComponent />
-        </ListItem>
-        <ListItem>
-          <CartProductCardComponent />
-        </ListItem>
-      </CartBuyProductsList>
-      <CartFooter>
-        <CartTotal>
-          Total: <span>R$2.000</span>
-        </CartTotal>
-        <CartButtonFinalize>Finalizar Compra</CartButtonFinalize>
-      </CartFooter>
-    </CartBuyContainer>
+    <LazyMotion features={domAnimation} strict>
+      <CartBuyContainer
+        style={{ overflow: "hidden" }}
+        initial={{ width: 0 }}
+        animate={animate}
+        exit={{ width: 0 }}
+      >
+        <CartBuyHeader>
+          <CartBuyTitle>
+            Carrinho
+            <br /> de compras
+          </CartBuyTitle>
+          <CloseButtonComponent onClick={closeCartBuy} />
+        </CartBuyHeader>
+        <CartBuyProductsList>
+          <ListItem>
+            <CartProductCardComponent />
+          </ListItem>
+          <ListItem>
+            <CartProductCardComponent />
+          </ListItem>
+          <ListItem>
+            <CartProductCardComponent />
+          </ListItem>
+          <ListItem>
+            <CartProductCardComponent />
+          </ListItem>
+          <ListItem>
+            <CartProductCardComponent />
+          </ListItem>
+          <ListItem>
+            <CartProductCardComponent />
+          </ListItem>
+        </CartBuyProductsList>
+        <CartFooter>
+          <CartTotal>
+            Total: <span>R$2.000</span>
+          </CartTotal>
+          <CartButtonFinalize>Finalizar Compra</CartButtonFinalize>
+        </CartFooter>
+      </CartBuyContainer>
+    </LazyMotion>
   );
 };
 

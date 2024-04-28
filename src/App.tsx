@@ -1,16 +1,17 @@
 import CartBuyComponent from "./components/CartBuyComponent/CartBuyComponent";
 import FooterComponent from "./components/FooterComponent/FooterComponent";
 import HeaderComponent from "./components/HeaderComponent/HeaderComponent";
+import { ShowCartBuyProvider } from "./contexts/CartBuyContext";
 import Products from "./pages/Products/Products";
 
 function App() {
   return (
-    <>
+    <ShowCartBuyProvider>
       <HeaderComponent />
       <Products />
-      {/* <CartBuyComponent /> */}
+      <CartBuyComponent />
       <FooterComponent />
-    </>
+    </ShowCartBuyProvider>
   );
 }
 

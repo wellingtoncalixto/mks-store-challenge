@@ -1,10 +1,12 @@
 import React from "react";
 import { CardButton } from "./styled";
 import CartIconSvg from "../../../../assets/cart-icon.svg?react";
+import { useCartBuy } from "../../../../contexts/CartBuyContext";
 
 const CartButtomComponent = () => {
+  const { showCartBuy } = useCartBuy();
   return (
-    <CardButton>
+    <CardButton onClick={showCartBuy}>
       <CartIconSvg />
       <span>0</span>
     </CardButton>

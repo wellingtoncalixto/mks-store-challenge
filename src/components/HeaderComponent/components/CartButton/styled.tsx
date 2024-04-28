@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const CardButton = styled.button`
+  cursor: pointer;
+
   display: flex;
   gap: 1rem;
   height: 2.8125rem;
