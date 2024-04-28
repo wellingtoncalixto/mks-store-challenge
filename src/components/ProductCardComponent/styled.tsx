@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const ProductCardContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   position: relative;
 
   background-color: #ffffff;
@@ -28,6 +27,7 @@ export const ProductInformationsContainer = styled.div`
   grid-template-columns: minmax(min-content, 7.75rem) 1fr;
   justify-items: center;
   align-items: center;
+  gap: 0.5rem;
   row-gap: 0.5rem;
   grid-template-areas:
     "name price"
@@ -38,11 +38,21 @@ export const ProductInformationsContainer = styled.div`
 `;
 
 export const ProductName = styled.h1`
+  align-self: center;
   grid-area: name;
+  width: 100%;
+  min-height: 2.375rem;
 
   color: #2c2c2c;
   font-size: 1rem;
   font-weight: 400;
+  text-align: left;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 `;
 
 export const ProductPrice = styled.span`
@@ -61,7 +71,15 @@ export const ProductPrice = styled.span`
 export const ProductDescription = styled.p`
   grid-area: description;
   font-size: 10px;
+  max-width: 100%;
   font-weight: 300;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
 `;
 
 export const BuyButton = styled.button`

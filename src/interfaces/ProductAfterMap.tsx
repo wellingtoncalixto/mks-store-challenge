@@ -3,6 +3,6 @@ export interface ProductAfterMap {
   name: string;
   brand: string;
   description: string;
-  price: number;
+  price: string;
   photo: string;
 }

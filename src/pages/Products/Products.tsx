@@ -18,9 +18,11 @@ const Products = () => {
   return (
     <ProductsSection>
       <ProductsList>
-        <ProductItem>
-          <ProductCardComponent />
-        </ProductItem>
+        {products.map((product) => (
+          <ProductItem key={product.id}>
+            <ProductCardComponent product={product} />
+          </ProductItem>
+        ))}
       </ProductsList>
     </ProductsSection>
   );

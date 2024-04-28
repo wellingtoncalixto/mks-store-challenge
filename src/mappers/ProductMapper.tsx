@@ -10,10 +10,19 @@ export function ProductMapper(productArray: ProductBeforeMap[]) {
         id: product.id,
         name: product.name,
         photo: product.photo,
-        price: parseFloat(product.price),
+        price: formatPrice(product.price),
       };
     }
   );
 
   return mapProducts;
+}
+
+function formatPrice(price: string): string {
+  const formatCurrency = parseFloat(price).toLocaleString("pt-BR", {
+    style: "currency",
+    minimumFractionDigits: 0,
+    currency: "BRL",
+  });
+  return formatCurrency;
 }
