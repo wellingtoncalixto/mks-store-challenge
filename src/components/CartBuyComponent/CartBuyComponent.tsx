@@ -14,10 +14,10 @@ import {
 } from "./styled";
 import CloseButtonComponent from "../CloseButtonComponent/CloseButtonComponent";
 import CartProductCardComponent from "./components/CartProductCardComponent/CartProductCardComponent";
-import { useCartBuy } from "../../contexts/ShowCartBuyContext";
+import { useShowCartBuy } from "../../contexts/ShowCartBuyContext";
 
 const CartBuyComponent = () => {
-  const { open, closeCartBuy } = useCartBuy();
+  const { open, closeCartBuy } = useShowCartBuy();
   const animate = {
     transition: { type: "tween" },
     width: open ? "auto" : 0,
@@ -39,21 +39,6 @@ const CartBuyComponent = () => {
           <CloseButtonComponent onClick={closeCartBuy} />
         </CartBuyHeader>
         <CartBuyProductsList>
-          <ListItem>
-            <CartProductCardComponent />
-          </ListItem>
-          <ListItem>
-            <CartProductCardComponent />
-          </ListItem>
-          <ListItem>
-            <CartProductCardComponent />
-          </ListItem>
-          <ListItem>
-            <CartProductCardComponent />
-          </ListItem>
-          <ListItem>
-            <CartProductCardComponent />
-          </ListItem>
           <ListItem>
             <CartProductCardComponent />
           </ListItem>

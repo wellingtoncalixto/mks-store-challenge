@@ -1,7 +1,7 @@
-import { ProductAfterMap } from "../interfaces/ProductAfterMap";
-import { ProductBeforeMap } from "../interfaces/ProductBeforeMap";
+import { ProductAfterMap } from "../interfaces/Product/ProductAfterMap";
+import { ProductBeforeMap } from "../interfaces/Product/ProductBeforeMap";
 
-export function ProductMapper(productArray: ProductBeforeMap[]) {
+export function productMapper(productArray: ProductBeforeMap[]) {
   const mapProducts: ProductAfterMap[] = productArray.map(
     (product: ProductBeforeMap) => {
       return {

@@ -2,7 +2,7 @@ import React from "react";
 import { ProductsSection, ProductsList, ProductItem } from "./styled";
 import ProductCardComponent from "../../components/ProductCardComponent/ProductCardComponent";
 import api from "../../api/Api";
-import { ProductAfterMap } from "../../interfaces/ProductAfterMap";
+import { ProductAfterMap } from "../../interfaces/Product/ProductAfterMap";
 
 const Products = () => {
   const [products, setProducts] = React.useState<ProductAfterMap[]>([]);

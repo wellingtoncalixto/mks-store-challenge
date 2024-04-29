@@ -1,4 +1,4 @@
-import { ProductAfterMap } from "../../../interfaces/ProductAfterMap";
+import { ProductAfterMap } from "../../../interfaces/Product/ProductAfterMap";
 
 export interface ProductCardPropsInterface {
   product: ProductAfterMap;

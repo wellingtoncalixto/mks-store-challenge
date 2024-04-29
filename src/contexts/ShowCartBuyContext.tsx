@@ -1,14 +1,14 @@
 import React from "react";
 
-type showCartBuy = {
+type ShowCartBuy = {
   open: boolean;
   closeCartBuy: () => void;
   showCartBuy: () => void;
 };
 
-export const ShowCartBuyContext = React.createContext<showCartBuy | null>(null);
+export const ShowCartBuyContext = React.createContext<ShowCartBuy | null>(null);
 
-export const useCartBuy = () => {
+export const useShowCartBuy = () => {
   const context = React.useContext(ShowCartBuyContext);
   if (!context) throw new Error("useContext deve estar dentro do Provider");
   return context;
@@ -24,7 +24,6 @@ export const ShowCartBuyProvider = ({ children }: React.PropsWithChildren) => {
   function closeCartBuy(): void {
     setOpen(false);
   }
-  console.log(open);
 
   return (
     <ShowCartBuyContext.Provider value={{ open, closeCartBuy, showCartBuy }}>

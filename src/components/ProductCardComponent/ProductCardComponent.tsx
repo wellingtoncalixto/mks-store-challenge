@@ -10,10 +10,11 @@ import {
 } from "./styled";
 
 import ShoppingBagIconSvg from "../../assets/shopping-bag-icon.svg?react";
-import photo from "../../assets/apple-watch.png";
 import { ProductCardPropsInterface } from "./interfaces/ProductCardPropsInterface";
+import { useCartBuy } from "../../contexts/CartyBuyContext";
 
 const ProductCardComponent = ({ product }: ProductCardPropsInterface) => {
+  const { addItem } = useCartBuy();
   return (
     <ProductCardContainer>
       <img src={product.photo} alt="product photo" />
@@ -22,7 +23,7 @@ const ProductCardComponent = ({ product }: ProductCardPropsInterface) => {
         <ProductPrice>{product.price}</ProductPrice>
         <ProductDescription>{product.description}</ProductDescription>
       </ProductInformationsContainer>
-      <BuyButton>
+      <BuyButton onClick={() => addItem(product)}>
         <ShoppingBagIconSvg />
         <BuyText>Comprar</BuyText>
       </BuyButton>
