@@ -6,6 +6,9 @@ export interface Cart {
   qtd: number;
   totalPrice: string;
   addItem: (addItem: ProductAfterMap) => void;
+  addQtd: (product: Item) => void;
+  removeQtd: (product: Item) => void;
+  removeIten: (productId: number) => void;
 }
 
 export interface Item {

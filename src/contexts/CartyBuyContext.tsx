@@ -38,12 +38,17 @@ export const CartBuyProvider = ({ children }: React.PropsWithChildren) => {
 
   function addItem(addItem: ProductAfterMap): void {
     const itemAfterMapper = cartItemMapper(addItem);
-    const exist = itens.filter((item) => item.id === itemAfterMapper.id);
+    const itemExist = itens.findIndex((x) => x.id === itemAfterMapper.id);
 
-    if (exist.length === 1) {
-      const uptateItens = itens.filter(
-        (item) => item.id === addItem.id && item.qtd++
-      );
+    if (itemExist !== -1) {
+      const uptateItens = itens.map((item) => {
+        if (item.id === itemAfterMapper.id) {
+          item.qtd = item.qtd + 1;
+          return item;
+        } else {
+          return item;
+        }
+      });
       setItens(uptateItens);
     } else {
       setItens((itens) => [...itens, itemAfterMapper]);
@@ -52,11 +57,54 @@ export const CartBuyProvider = ({ children }: React.PropsWithChildren) => {
     setQtd((qtd) => qtd + 1);
   }
 
-  console.log(totalPrice);
+  function addQtd(product: Item): void {
+    const updadateItens = itens.map((item) => {
+      if (item.id === product.id) {
+        item.qtd = item.qtd + 1;
+        return item;
+      } else {
+        return item;
+      }
+    });
+    setItens(updadateItens);
+  }
+
+  function removeQtd(product: Item): void {
+    const updadateItens = itens.map((item) => {
+      if (item.id === product.id) {
+        item.qtd = item.qtd - 1;
+        return item;
+      } else {
+        return item;
+      }
+    });
+    setItens(updadateItens);
+  }
+
+  function removeIten(productId: number): void {
+    const updadateItens = itens.filter((item) => {
+      if (item.id === productId) {
+        setQtd((qtd) => (qtd !== 0 ? qtd - item.qtd : qtd));
+        return;
+      } else {
+        return item;
+      }
+    });
+    setItens(updadateItens);
+  }
 
   return (
     <CartBuyContext.Provider
-      value={{ itens, setItens, qtd, totalPrice, addItem }}
+      value={{
+        itens,
+        setItens,
+        qtd,
+        totalPrice,
+        addItem,
+        addQtd,
+        removeQtd,
+        removeIten,
+      }}
     >
       {children}
     </CartBuyContext.Provider>

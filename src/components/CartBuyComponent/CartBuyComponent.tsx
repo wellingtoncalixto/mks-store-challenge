@@ -15,12 +15,14 @@ import {
 import CloseButtonComponent from "../CloseButtonComponent/CloseButtonComponent";
 import CartProductCardComponent from "./components/CartProductCardComponent/CartProductCardComponent";
 import { useShowCartBuy } from "../../contexts/ShowCartBuyContext";
+import { useCartBuy } from "../../contexts/CartyBuyContext";
 
 const CartBuyComponent = () => {
   const { open, closeCartBuy } = useShowCartBuy();
+  const { totalPrice, itens } = useCartBuy();
   const animate = {
     transition: { type: "tween" },
-    width: open ? "auto" : 0,
+    width: open ? "33.75%" : 0,
   };
 
   return (
@@ -39,13 +41,15 @@ const CartBuyComponent = () => {
           <CloseButtonComponent onClick={closeCartBuy} />
         </CartBuyHeader>
         <CartBuyProductsList>
-          <ListItem>
-            <CartProductCardComponent />
-          </ListItem>
+          {itens.map((item, index) => (
+            <ListItem key={item.id}>
+              <CartProductCardComponent product={item} index={index} />
+            </ListItem>
+          ))}
         </CartBuyProductsList>
         <CartFooter>
           <CartTotal>
-            Total: <span>R$2.000</span>
+            Total: <span>{totalPrice}</span>
           </CartTotal>
           <CartButtonFinalize>Finalizar Compra</CartButtonFinalize>
         </CartFooter>
