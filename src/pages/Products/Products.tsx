@@ -3,22 +3,28 @@ import { ProductsSection, ProductsList, ProductItem } from "./styled";
 import ProductCardComponent from "../../components/ProductCardComponent/ProductCardComponent";
 import api from "../../api/Api";
 import { ProductAfterMap } from "../../interfaces/Product/ProductAfterMap";
+import { useQuery } from "react-query";
+import axios, { AxiosError } from "axios";
 
 const Products = () => {
-  const [products, setProducts] = React.useState<ProductAfterMap[]>([]);
+  const { data, error, isLoading } = useQuery<ProductAfterMap[], AxiosError>({
+    queryKey: ["productsList"],
+    queryFn: api.getProducts,
+  });
 
-  React.useEffect(() => {
-    async function callGetProducts() {
-      const response = await api.getProducts();
-      setProducts(response);
-    }
-    callGetProducts();
-  }, []);
+  // if (isLoading) return <div>Carregando...</div>;
+  // if (error) {
+  //   const message =
+  //     axios.isAxiosError(error) && error.response
+  //       ? `Erro: ${error.response.status} ${error.response.statusText}`
+  //       : error.message;
+  //   return <div>{message}</div>;
+  // }
 
   return (
     <ProductsSection>
       <ProductsList>
-        {products.map((product) => (
+        {data?.map((product) => (
           <ProductItem key={product.id}>
             <ProductCardComponent product={product} />
           </ProductItem>
