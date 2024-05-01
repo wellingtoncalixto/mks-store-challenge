@@ -8,13 +8,8 @@ import {
   CloseButton,
 } from "./styled";
 
-import { Item } from "../../../../interfaces/Cart/Cart";
 import { useCartBuy } from "../../../../contexts/CartyBuyContext";
-
-interface CartProductCardPros {
-  product: Item;
-  index: number;
-}
+import { CartProductCardPros } from "./interfaces/CartProductCard";
 
 const CartProductCardComponent = ({ product, index }: CartProductCardPros) => {
   const { removeQtd, addQtd, removeIten } = useCartBuy();
