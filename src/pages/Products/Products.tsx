@@ -5,31 +5,35 @@ import api from "../../api/Api";
 import { ProductAfterMap } from "../../interfaces/Product/ProductAfterMap";
 import { useQuery } from "react-query";
 import axios, { AxiosError } from "axios";
+import SkeletonProductLoadingComponent from "../../components/SkeletonProductLoading/SkeletonProductLoadingComponent";
 
 const Products = () => {
-  const { data, error, isLoading } = useQuery<ProductAfterMap[], AxiosError>({
+  const { data, isLoading, error } = useQuery<ProductAfterMap[], AxiosError>({
     queryKey: ["productsList"],
     queryFn: api.getProducts,
   });
 
-  // if (isLoading) return <div>Carregando...</div>;
-  // if (error) {
-  //   const message =
-  //     axios.isAxiosError(error) && error.response
-  //       ? `Erro: ${error.response.status} ${error.response.statusText}`
-  //       : error.message;
-  //   return <div>{message}</div>;
-  // }
+  if (error) {
+    const message =
+      axios.isAxiosError(error) && error.response
+        ? `Erro: ${error.response.status} ${error.response.statusText}`
+        : error.message;
+    return <div>{message}</div>;
+  }
 
   return (
     <ProductsSection>
-      <ProductsList>
-        {data?.map((product) => (
-          <ProductItem key={product.id}>
-            <ProductCardComponent product={product} />
-          </ProductItem>
-        ))}
-      </ProductsList>
+      {isLoading ? (
+        <SkeletonProductLoadingComponent />
+      ) : (
+        <ProductsList>
+          {data?.map((product) => (
+            <ProductItem key={product.id}>
+              <ProductCardComponent product={product} />
+            </ProductItem>
+          ))}
+        </ProductsList>
+      )}
     </ProductsSection>
   );
 };
